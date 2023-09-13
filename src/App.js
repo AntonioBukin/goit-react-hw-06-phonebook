@@ -8,6 +8,10 @@ import MyPhoneForm from './components/MyPhoneForm/MyPhoneForm';
 import styles from './index.module.scss';
 import './shared/styles/styles.scss';
 
+//Redux - за для створення глобального стану
+//React-redux - щоб створити можливість доступу усім компонентам додату до глобального стану. Бібліотека допомогає
+//збирати данні з глоб.стану так і зминувати їх.
+
 const MyPhone = () => {
   const [contacts, setContacts] = useState(() => {
     const contacts = JSON.parse(localStorage.getItem('MyPhone')); //беремо строку, перетворюємо на масив та додаємо у setState
