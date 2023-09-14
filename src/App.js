@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
-import { nanoid } from 'nanoid';
+import { useSelector } from 'react-redux';
+
+//import { nanoid } from 'nanoid';
 
 import MyPhoneBlock from './components/MyPhoneBlock/MyPhoneBlock';
 import MyPhoneList from './components/MyPhoneList/MyPhoneList';
 import MyPhoneForm from './components/MyPhoneForm/MyPhoneForm';
+
+import {getContacts, getFilteredPhone} from "./redux/selectors";
 
 import styles from './index.module.scss';
 import './shared/styles/styles.scss';
@@ -13,64 +17,66 @@ import './shared/styles/styles.scss';
 //збирати данні з глоб.стану так і зминувати їх.
 
 const MyPhone = () => {
-  const [contacts, setContacts] = useState(() => {
-    const contacts = JSON.parse(localStorage.getItem('MyPhone')); //беремо строку, перетворюємо на масив та додаємо у setState
-    return contacts && contacts.length ? contacts : [];
-  });
-  const [filter, setFilter] = useState(false);
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilteredPhone);
+  // const [contacts, setContacts] = useState(() => {
+  //   const contacts = JSON.parse(localStorage.getItem('MyPhone')); //беремо строку, перетворюємо на масив та додаємо у setState
+  //   return contacts && contacts.length ? contacts : [];
+  // });
+  //const [filter, setFilter] = useState(false);
 
-  useEffect(() => {
-    localStorage.setItem('MyPhone', JSON.stringify(contacts)); 
-  }, [contacts])
+  // useEffect(() => {
+  //   localStorage.setItem('MyPhone', JSON.stringify(contacts)); 
+  // }, [contacts])
 
-  const handleFilter = ({ target }) => setFilter(target.value); //ф-ція яка записує target.value у фільтр
+  //const handleFilter = ({ target }) => setFilter(target.value); //ф-ція яка записує target.value у фільтр
 
-  const onAddPhone = ({ name, number }) => {
-    if (isDublicate({ name, number })) {
-      return alert(`${name} - ${number} is alredy in contacts`);
-    }
-    setContacts(prevPhone => {
-      const newPhone = {
-        id: nanoid(),
-        name,
-        number,
-      };
-      return [...prevPhone, newPhone];
-    });
-  };
+  // const onAddPhone = ({ name, number }) => {
+  //   if (isDublicate({ name, number })) {
+  //     return alert(`${name} - ${number} is alredy in contacts`);
+  //   }
+  //   setContacts(prevPhone => {
+  //     const newPhone = {
+  //       id: nanoid(),
+  //       name,
+  //       number,
+  //     };
+  //     return [...prevPhone, newPhone];
+  //   });
+  // };
 
-  const onDeletePhone = id => {
-    setContacts(prevPhone => prevPhone.filter(
-      contact => contact.id !== id))
-  };
+  // const onDeletePhone = id => {
+  //   setContacts(prevPhone => prevPhone.filter(
+  //     contact => contact.id !== id))
+  // };
 
-  const getFilteredPhone = () => {
-        if (!filter) {
-          return contacts;
-        }
-        const normalizedFilter = filter.toLowerCase();
-        const result = contacts.filter(({ name }) => {
-          return name.toLowerCase().includes(normalizedFilter);
-        });
+  // const getFilteredPhone = () => {
+  //       if (!filter) {
+  //         return contacts;
+  //       }
+  //       const normalizedFilter = filter.toLowerCase();
+  //       const result = contacts.filter(({ name }) => {
+  //         return name.toLowerCase().includes(normalizedFilter);
+  //       });
     
-        return result;
-      }
+  //       return result;
+  //     }
 
-  const isDublicate = ({ name, number }) => {
-    const normalizedName = name.toLowerCase();
-    const normalizedNumber = number.toLowerCase();
+  // const isDublicate = ({ name, number }) => {
+  //   const normalizedName = name.toLowerCase();
+  //   const normalizedNumber = number.toLowerCase();
 
-    const dublicate = contacts.find(contact => {
-      return (
-        contact.name.toLowerCase() === normalizedName &&
-        contact.number.toLowerCase() === normalizedNumber
-      );
-    });
+  //   const dublicate = contacts.find(contact => {
+  //     return (
+  //       contact.name.toLowerCase() === normalizedName &&
+  //       contact.number.toLowerCase() === normalizedNumber
+  //     );
+  //   });
 
-    return Boolean(dublicate);
-  };
+  //   return Boolean(dublicate);
+  // };
 
-  const filteredPhone = getFilteredPhone();
+  // const filteredPhone = getFilteredPhone();
   //console.log(filteredPhone);
 
   return (
@@ -79,16 +85,16 @@ const MyPhone = () => {
         <h3 className={styles.title}>My Phone</h3>
         <div className={styles.blocks}>
           <MyPhoneBlock title="">
-            <MyPhoneForm onSubmit={onAddPhone} />
+            <MyPhoneForm  />
           </MyPhoneBlock>
           <MyPhoneBlock title="Find contacts by name">
             <input
               name="filter"
-              onChange={handleFilter}
+              //onChange={handleFilter}
               className={styles.textField}
               placeholder="enter number"
             />
-            <MyPhoneList contacts={filteredPhone} onDeletePhone={onDeletePhone} />
+            <MyPhoneList contacts={contacts} />
           </MyPhoneBlock>
         </div>
       </div>
