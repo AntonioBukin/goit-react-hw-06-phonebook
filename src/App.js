@@ -5,12 +5,15 @@ import MyPhoneBlock from './components/MyPhoneBlock/MyPhoneBlock';
 import MyPhoneList from './components/MyPhoneList/MyPhoneList';
 import MyPhoneForm from './components/MyPhoneForm/MyPhoneForm';
 
-import { addContact, deleteContact, setFilter } from 'redux/actions';
+import { addContact, deleteContact } from 'redux/contacts/contacts-actions';
+import { setFilter } from 'redux/filter/filter-actions';
+
 import {
   getContacts,
-  getFilteredPhone,
   getFilteredContacts,
-} from './redux/selectors';
+} from './redux/contacts/contacts-selectors';
+
+import {getFilteredPhone} from "./redux/filter/filter-selectors";
 
 import styles from './index.module.scss';
 import './shared/styles/styles.scss';
