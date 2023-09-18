@@ -13,7 +13,7 @@ import {
   getFilteredContacts,
 } from './redux/contacts/contacts-selectors';
 
-import {getFilteredPhone} from "./redux/filter/filter-selectors";
+import { getFilteredPhone } from './redux/filter/filter-selectors';
 
 import styles from './index.module.scss';
 import './shared/styles/styles.scss';
@@ -42,24 +42,14 @@ const MyPhone = () => {
   // }, [contacts])
 
   const handleFilter = ({ target }) => {
-    const action = setFilter(target.value);
-    dispatch(action);
+    dispatch(setFilter(target.value));
   }; //ф-ція яка записує target.value у фільтр
 
   const onAddPhone = ({ name, number }) => {
     if (isDublicate({ name, number })) {
       return alert(`${name} - ${number} is alredy in contacts`);
     }
-    const action = addContact({ name, number });
-    dispatch(action);
-    // setContacts(prevPhone => {
-    //   const newPhone = {
-    //     id: nanoid(),
-    //     name,
-    //     number,
-    //   };
-    //   return [...prevPhone, newPhone];
-    // });
+    dispatch(addContact({ name, number }));
   };
 
   const isDublicate = ({ name, number }) => {
@@ -77,10 +67,7 @@ const MyPhone = () => {
   };
 
   const onDeletePhone = id => {
-    const action = deleteContact(id);
-    dispatch(action);
-    // setContacts(prevPhone => prevPhone.filter(
-    //   contact => contact.id !== id))
+    dispatch(deleteContact(id));
   };
 
   // const getFilteredPhone = () => {
