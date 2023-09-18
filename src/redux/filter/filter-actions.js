@@ -1,6 +1,6 @@
-import { createAction } from '@reduxjs/toolkit';
+// import { createAction } from '@reduxjs/toolkit';
 
-export const setFilter = createAction('filter/set');
+// export const setFilter = createAction('filter/set');
 
 // import { SET_FILTER } from './filter-types';
 

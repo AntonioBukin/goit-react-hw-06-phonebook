@@ -5,8 +5,8 @@ import MyPhoneBlock from './components/MyPhoneBlock/MyPhoneBlock';
 import MyPhoneList from './components/MyPhoneList/MyPhoneList';
 import MyPhoneForm from './components/MyPhoneForm/MyPhoneForm';
 
-import { addContact, deleteContact } from 'redux/contacts/contacts-actions';
-import { setFilter } from 'redux/filter/filter-actions';
+import { addContact, deleteContact } from 'redux/contacts/contacts-slice';
+import { setFilter } from 'redux/filter/filter-slice';
 
 import {
   getContacts,
