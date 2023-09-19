@@ -78,4 +78,3 @@ export default MyPhoneForm;
 MyPhoneForm.propTypes = {
   onSubmit: propTypes.func.isRequired,
 };
-

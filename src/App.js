@@ -30,16 +30,6 @@ const MyPhone = () => {
 
   const dispatch = useDispatch();
 
-  // const [contacts, setContacts] = useState(() => {
-  //   const contacts = JSON.parse(localStorage.getItem('MyPhone')); //беремо строку, перетворюємо на масив та додаємо у setState
-  //   return contacts && contacts.length ? contacts : [];
-  // });
-  //const [filter, setFilter] = useState(false);
-
-  // useEffect(() => {
-  //   localStorage.setItem('MyPhone', JSON.stringify(contacts));
-  // }, [contacts])
-
   const handleFilter = ({ target }) => {
     dispatch(setFilter(target.value));
   }; //ф-ція яка записує target.value у фільтр
@@ -68,21 +58,6 @@ const MyPhone = () => {
   const onDeletePhone = id => {
     dispatch(deleteContact(id));
   };
-
-  // const getFilteredPhone = () => {
-  //       if (!filter) {
-  //         return contacts;
-  //       }
-  //       const normalizedFilter = filter.toLowerCase();
-  //       const result = contacts.filter(({ name }) => {
-  //         return name.toLowerCase().includes(normalizedFilter);
-  //       });
-
-  //       return result;
-  //     }
-
-  // const filteredPhone = getFilteredPhone();
-  // console.log(filteredPhone);
 
   return (
     <div className="container">
