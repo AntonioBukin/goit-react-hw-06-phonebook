@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
-  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -9,19 +8,12 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-
-import rootReducer from './root-reducer';
-
-const persistConfig = {
-  key: 'root', //це ключ під якім будемо записувати у localStorage
-  storage,
-};
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+import { persistedReducer } from './contactsSlice';
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: {
+    contacts: persistedReducer,
+  },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

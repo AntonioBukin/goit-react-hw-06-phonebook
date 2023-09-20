@@ -1,0 +1,73 @@
+.wrapper {
+  position: relative;
+  width: 400px;
+  margin: 30px auto;
+  font-weight: 700;
+  font-size: 18px;
+  background-color: rgb(239, 239, 9);
+  text-align: center;
+  border-radius: 20px;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0 25px 0;
+  padding-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.dataInput {
+  display: flex;
+  margin: 5px 10px 20px 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #f7f4f4;
+  border-radius: 58px;
+  box-sizing: border-box;
+}
+
+.btn[type='submit'] {
+  margin-bottom: 15px;
+  background-color: #29caea;
+  border-radius: 100px;
+  color: rgb(5, 26, 251);
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn[type='submit']:hover {
+  transform: scale(1.05) rotate(-1deg);
+}
+
+.icon {
+  margin-right: 8px;
+}
+
+.wrapper__icon {
+  position: absolute;
+  top: 18px;
+  left: 152px;
+}
+
+.wrapper__iconPhone {
+  position: absolute;
+  top: 143px;
+  left: 140px;
+}

@@ -1,0 +1,56 @@
+.contacts {
+  list-style: none;
+  padding: 0;
+  margin: 30px auto;
+  width: 400px;
+  font-weight: 600;
+  font-size: 18px;
+  background-color: rgb(243, 243, 9);
+  text-align: left;
+  border-radius: 20px;
+}
+
+.contacts__item {
+  margin: 10px;
+  padding-top: 5px;
+}
+
+.contacts__data {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contacts li p span {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.btnDel {
+  margin-bottom: 15px;
+  background-color: #29caea;
+  border-radius: 100px;
+  color: rgb(5, 26, 251);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 14px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btnDel:hover {
+  transform: scale(1.05) rotate(-1deg);
+}
+
+.btnDel:active {
+  background: rgb(3, 92, 247);
+}
